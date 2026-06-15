@@ -1,1 +1,396 @@
 <h1>agrinho</h1>
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Agro Forte - Futuro Sustentável</title>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<style>
+:root{
+--verde:#2e7d32;
+--verde2:#43a047;
+--claro:#f4fff4;
+--escuro:#1b5e20;
+}
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Segoe UI,sans-serif;
+scroll-behavior:smooth;
+}
+
+body{
+background:var(--claro);
+color:#333;
+}
+
+header{
+position:fixed;
+top:0;
+width:100%;
+z-index:1000;
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:20px 8%;
+background:rgba(27,94,32,.95);
+color:white;
+backdrop-filter:blur(10px);
+}
+
+nav a{
+color:white;
+text-decoration:none;
+margin-left:20px;
+font-weight:bold;
+transition:.3s;
+}
+
+nav a:hover{
+color:#9cff9c;
+}
+
+.hero{
+height:100vh;
+background:
+linear-gradient(rgba(0,0,0,.5),rgba(0,0,0,.5)),
+url("https://images.unsplash.com/photo-1500937386664-56d1dfef3854");
+background-size:cover;
+background-position:center;
+display:flex;
+justify-content:center;
+align-items:center;
+text-align:center;
+color:white;
+padding:20px;
+}
+
+.hero h1{
+font-size:4rem;
+margin-bottom:15px;
+}
+
+.hero p{
+font-size:1.3rem;
+max-width:800px;
+margin:auto;
+}
+
+.btn{
+margin-top:25px;
+padding:15px 30px;
+background:var(--verde2);
+border:none;
+color:white;
+font-size:1rem;
+border-radius:10px;
+cursor:pointer;
+transition:.3s;
+}
+
+.btn:hover{
+transform:scale(1.05);
+}
+
+section{
+padding:90px 10%;
+}
+
+h2{
+text-align:center;
+margin-bottom:40px;
+color:var(--escuro);
+font-size:2.3rem;
+}
+
+.cards{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:25px;
+}
+
+.card{
+background:white;
+padding:30px;
+border-radius:15px;
+box-shadow:0 8px 20px rgba(0,0,0,.1);
+transition:.4s;
+}
+
+.card:hover{
+transform:translateY(-10px);
+}
+
+.card h3{
+margin-bottom:15px;
+color:var(--verde);
+}
+
+.metricas{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:25px;
+margin-bottom:50px;
+}
+
+.metrica{
+background:var(--verde);
+color:white;
+padding:30px;
+text-align:center;
+border-radius:15px;
+}
+
+.numero{
+font-size:3rem;
+font-weight:bold;
+}
+
+canvas{
+background:white;
+padding:20px;
+border-radius:15px;
+box-shadow:0 5px 15px rgba(0,0,0,.1);
+}
+
+.contato{
+max-width:700px;
+margin:auto;
+}
+
+input, textarea{
+width:100%;
+padding:15px;
+margin:10px 0;
+border:1px solid #ccc;
+border-radius:8px;
+}
+
+footer{
+background:var(--escuro);
+color:white;
+text-align:center;
+padding:30px;
+}
+
+@media(max-width:768px){
+
+header{
+flex-direction:column;
+}
+
+.hero h1{
+font-size:2.5rem;
+}
+
+nav{
+margin-top:10px;
+}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<h2>🌱 Agro Forte</h2>
+
+<nav>
+<a href="#sobre">Sobre</a>
+<a href="#impacto">Impacto</a>
+<a href="#grafico">Dados</a>
+<a href="#contato">Contato</a>
+</nav>
+</header>
+
+<section class="hero">
+
+<div>
+
+<h1>Agro Forte</h1>
+
+<p>
+Tecnologia, inovação e sustentabilidade para construir
+um agronegócio mais produtivo e responsável com o meio ambiente.
+</p>
+
+<button class="btn" onclick="saibaMais()">
+Conhecer Projeto
+</button>
+
+</div>
+
+</section>
+
+<section id="sobre">
+
+<h2>Nosso Propósito</h2>
+
+<div class="cards">
+
+<div class="card">
+<h3>🌿 Sustentabilidade</h3>
+<p>
+Redução de impactos ambientais e preservação dos recursos naturais.
+</p>
+</div>
+
+<div class="card">
+<h3>🚜 Agricultura Inteligente</h3>
+<p>
+Uso de sensores, drones e análise de dados para melhorar a produção.
+</p>
+</div>
+
+<div class="card">
+<h3>☀ Energia Renovável</h3>
+<p>
+Aproveitamento de energia solar e tecnologias limpas no campo.
+</p>
+</div>
+
+</div>
+
+</section>
+
+<section id="impacto">
+
+<h2>Indicadores de Sustentabilidade</h2>
+
+<div class="metricas">
+
+<div class="metrica">
+<div class="numero" id="agua">0</div>
+<p>Economia de Água (%)</p>
+</div>
+
+<div class="metrica">
+<div class="numero" id="energia">0</div>
+<p>Energia Renovável (%)</p>
+</div>
+
+<div class="metrica">
+<div class="numero" id="carbono">0</div>
+<p>Redução de Carbono (%)</p>
+</div>
+
+</div>
+
+</section>
+
+<section id="grafico">
+
+<h2>Evolução da Produção Sustentável</h2>
+
+<canvas id="myChart"></canvas>
+
+</section>
+
+<section id="contato">
+
+<h2>Contato</h2>
+
+<div class="contato">
+
+<form onsubmit="enviar(event)">
+
+<input type="text" placeholder="Seu nome" required>
+
+<input type="email" placeholder="Seu email" required>
+
+<textarea rows="6" placeholder="Mensagem"></textarea>
+
+<button class="btn" type="submit">
+Enviar Mensagem
+</button>
+
+</form>
+
+</div>
+
+</section>
+
+<footer>
+
+<h3>Agro Forte - Futuro Sustentável</h3>
+
+<p>
+Desenvolvido para promover inovação e preservação ambiental.
+</p>
+
+</footer>
+
+<script>
+
+function saibaMais(){
+alert(
+"Bem-vindo ao Agro Forte 🌱\n\nJuntos construindo um futuro sustentável."
+);
+}
+
+function contador(id, final){
+
+let atual = 0;
+
+let tempo = setInterval(()=>{
+
+atual++;
+
+document.getElementById(id).innerHTML = atual;
+
+if(atual >= final){
+clearInterval(tempo);
+}
+
+},20);
+}
+
+contador("agua",88);
+contador("energia",76);
+contador("carbono",69);
+
+const ctx = document.getElementById('myChart');
+
+new Chart(ctx,{
+type:'line',
+data:{
+labels:[
+'2022',
+'2023',
+'2024',
+'2025',
+'2026'
+],
+datasets:[{
+label:'Produção Sustentável',
+data:[35,52,68,84,97],
+borderWidth:4,
+fill:true,
+backgroundColor:'rgba(67,160,71,0.2)',
+borderColor:'#2e7d32',
+tension:.4
+}]
+},
+options:{
+responsive:true
+}
+});
+
+function enviar(e){
+
+e.preventDefault();
+
+alert(
+"Mensagem enviada com sucesso!"
+);
+
+}
+</script>
+
+</body>
+</html>x
